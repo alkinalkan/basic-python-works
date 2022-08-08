@@ -1,34 +1,33 @@
-from re import T
-
-submit = int(input("Hello! Welcome to Calculator. Lutfen bir sayi girisi yapiniz:"))
+submit = int(input("Hello! Welcome to Calculator. Please input a number:"))
 fact = 1
 
 while True:
-    operator = input("islem seciniz: + - / * ! q\n")
+    operator = input("Choose operator: + - / * ! q\n")
     if operator == "+":
-        number = int(input("Sayi giriniz:"))
+        number = int(input("Please input a number:"))
         submit += number
         print(submit)
     if operator == "-":
-        number = int(input("Sayi giriniz:"))
+        number = int(input("Please input a number:"))
         submit -= number
         print(submit)
     if operator == "/":
-        number = int(input("Sayi giriniz:"))
+        number = int(input("Please input a number:"))
         submit /= number
         submit = int(submit)
         print(submit)
     if operator == "*":
-        number = int(input("Sayi giriniz:"))
+        number = int(input("Please input a number:"))
         submit *= number
         print(submit)
     if operator == "!":
-        print("Halihazirda bulunan sayinin faktoriyeli:")
+        print("Factorial of number is:")
+        old_submit = submit
         for i in range(1, submit + 1):
             fact = fact * i
             submit = fact
-        print(fact)
+        print("{}! = {}".format(old_submit, submit))
         fact = 1
     if operator == "q":
-        print("Hesap makinesini kullandiginiz icin tesekkurler. Son ciktiniz: {}".format(submit))
+        print("Thanks for using calculator.\nYour last output: {}".format(submit))
         break
