@@ -1,6 +1,3 @@
-# Python Program for calculation operations.
-# It includes summation, extraction, division, multipication and factorial.
-
 submit = int(input("Hello! Welcome to Calculator Program. Please input a number:"))
 fact = 1
 
