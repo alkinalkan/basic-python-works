@@ -1,0 +1,53 @@
+class RecursiveFunctions:
+    @staticmethod
+    def factorial(n):
+        if n == 0:
+            return 1
+        else:
+            return n * RecursiveFunctions.factorial(n - 1)
+
+    @staticmethod
+    def fibonacci(n):
+        if n <= 1:
+            return n
+        else:
+            return RecursiveFunctions.fibonacci(n - 1) + RecursiveFunctions.fibonacci(n - 2)
+
+    @staticmethod
+    def power(x, n):
+        if n == 0:
+            return 1
+        else:
+            return x * RecursiveFunctions.power(x, n - 1)
+
+    @staticmethod
+    def binary_search(arr, target, low, high):
+        if low > high:
+            return -1
+        else:
+            mid = (low + high) // 2
+            if arr[mid] == target:
+                return mid
+            elif arr[mid] > target:
+                return RecursiveFunctions.binary_search(arr, target, low, mid - 1)
+            else:
+                return RecursiveFunctions.binary_search(arr, target, mid + 1, high)
+
+    @staticmethod
+    def tower_of_hanoi(n, source, destination, auxiliary):
+        if n > 0:
+            RecursiveFunctions.tower_of_hanoi(n - 1, source, auxiliary, destination)
+            print(f"Move disk {n} from {source} to {destination}")
+            RecursiveFunctions.tower_of_hanoi(n - 1, auxiliary, destination, source)
+
+
+rf = RecursiveFunctions()
+
+print(rf.factorial(5))
+print(rf.fibonacci(7))
+print(rf.power(2, 3))
+
+arr = [2, 4, 6, 8, 10]
+print(rf.binary_search(arr, 8, 0, len(arr) - 1))
+
+rf.tower_of_hanoi(3, 'A', 'C', 'B')
