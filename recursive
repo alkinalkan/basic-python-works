@@ -1,53 +1,70 @@
 class RecursiveFunctions:
     @staticmethod
     def factorial(n):
+        # Base case: factorial of 0 is 1
         if n == 0:
             return 1
         else:
+            # Recursive case: multiply n with factorial of (n-1)
             return n * RecursiveFunctions.factorial(n - 1)
 
     @staticmethod
     def fibonacci(n):
+        # Base cases: fibonacci of 0 is 0 and fibonacci of 1 is 1
         if n <= 1:
             return n
         else:
+            # Recursive case: sum of previous two fibonacci numbers
             return RecursiveFunctions.fibonacci(n - 1) + RecursiveFunctions.fibonacci(n - 2)
 
     @staticmethod
     def power(x, n):
+        # Base case: any number raised to the power of 0 is 1
         if n == 0:
             return 1
         else:
+            # Recursive case: multiply x with power(x, n-1)
             return x * RecursiveFunctions.power(x, n - 1)
 
     @staticmethod
     def binary_search(arr, target, low, high):
+        # Base case: target not found in the array
         if low > high:
             return -1
         else:
+            # Calculate the middle index
             mid = (low + high) // 2
             if arr[mid] == target:
+                # Base case: target found at the middle index
                 return mid
             elif arr[mid] > target:
+                # Recursive case: search the left half of the array
                 return RecursiveFunctions.binary_search(arr, target, low, mid - 1)
             else:
+                # Recursive case: search the right half of the array
                 return RecursiveFunctions.binary_search(arr, target, mid + 1, high)
 
     @staticmethod
     def tower_of_hanoi(n, source, destination, auxiliary):
         if n > 0:
+            # Move (n-1) disks from source to auxiliary using destination as the auxiliary peg
             RecursiveFunctions.tower_of_hanoi(n - 1, source, auxiliary, destination)
+            # Move the nth disk from source to destination
             print(f"Move disk {n} from {source} to {destination}")
+            # Move (n-1) disks from auxiliary to destination using source as the auxiliary peg
             RecursiveFunctions.tower_of_hanoi(n - 1, auxiliary, destination, source)
 
 
+# Create an instance of the RecursiveFunctions class
 rf = RecursiveFunctions()
 
-print(rf.factorial(5))
-print(rf.fibonacci(7))
-print(rf.power(2, 3))
+# Example usage of the recursive functions
+print(rf.factorial(5))  # Calculate the factorial of 5
+print(rf.fibonacci(7))  # Get the 7th Fibonacci number
+print(rf.power(2, 3))   # Calculate 2 raised to the power of 3
 
 arr = [2, 4, 6, 8, 10]
-print(rf.binary_search(arr, 8, 0, len(arr) - 1))
+print(rf.binary_search(arr, 8, 0, len(arr) - 1))  # Search for the target value 8 in the array
 
+# Solve the Tower of Hanoi puzzle with 3 disks
 rf.tower_of_hanoi(3, 'A', 'C', 'B')
