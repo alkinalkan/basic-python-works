@@ -1,0 +1,47 @@
+import random
+
+# Function to generate a random number between 1 and 100
+def generate_random_number():
+    return random.randint(1, 100)
+
+# Function to check if the user's guess is correct
+def check_guess(secret_number, guess):
+    if guess == secret_number:
+        return "Congratulations! You guessed the number correctly."
+    elif guess < secret_number:
+        return "Too low. Try again."
+    else:
+        return "Too high. Try again."
+
+# Main game loop
+def play_game():
+    secret_number = generate_random_number()
+    attempts = 0
+
+    print("Welcome to Guess the Number Game!")
+    print("I'm thinking of a number between 1 and 100. Can you guess it?")
+
+    while True:
+        guess = input("Enter your guess (or 'q' to quit): ")
+
+        # Check if the user wants to quit
+        if guess == 'q':
+            print("Thanks for playing. Goodbye!")
+            break
+
+        try:
+            guess = int(guess)
+            attempts += 1
+            result = check_guess(secret_number, guess)
+            print(result)
+
+            if result.startswith("Congratulations"):
+                print(f"It took you {attempts} attempts to guess the number.")
+                print("Thanks for playing!")
+                break
+
+        except ValueError:
+            print("Invalid input. Please enter a number or 'q' to quit.")
+
+# Start the game
+play_game()
