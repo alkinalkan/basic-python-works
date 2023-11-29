@@ -4,6 +4,7 @@ class AnimalDrawer:
             "1": "Dog",
             "2": "Cat",
             "3": "Fish",
+            "4": "Elephant",  # Added Elephant
             # Add more animals and their ASCII art here
         }
 
@@ -38,6 +39,16 @@ class AnimalDrawer:
         elif animal_name == "Fish":
             print("""
 ><(((('> 
+""")
+        elif animal_name == "Elephant":
+            print("""
+     __
+   /   \\
+  /     \\
+ ( O   O )
+  \\  ∼  /
+   | ∼ |
+   || ||
 """)
         # Add more ASCII art for other animals as needed
 
